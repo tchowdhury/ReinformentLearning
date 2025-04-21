@@ -8,7 +8,7 @@ num_actions = env.action_space.n
 Q = np.zeros((num_states, num_actions))
 learning_rate = 0.1
 gamma = 0.99
-num_episodes = 10000
+num_episodes = 1000
 rewards_per_episode = []
 avg_reward_per_random_episode = 0.0021
 
@@ -24,7 +24,7 @@ def update_q_table(state, action, reward, next_state):
 
 
 if __name__ == "__main__":
-    for episode in range(10000):
+    for episode in range(num_episodes):
         state, info = env.reset()
         total_reward = 0
         terminated = False
@@ -37,6 +37,7 @@ if __name__ == "__main__":
             update_q_table(state, action, reward, next_state)
             state = next_state
             total_reward += reward
+            #print(reward)
         # Append the total reward to the rewards list    
         rewards_per_episode.append(total_reward)
 
